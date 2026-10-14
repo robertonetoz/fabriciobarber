@@ -16,6 +16,7 @@ const sans = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://fabriciobarber.vercel.app"),
   title: "Fabrício Pereira Barber Club | Barbearia em Araguari – MG",
   description:
     "Corte, barba, sobrancelha na navalha e cortes infantis no centro de Araguari. Hora marcada ou ordem de chegada. Nota 4,9 no Google. Agende pelo WhatsApp.",
@@ -27,12 +28,20 @@ export const metadata: Metadata = {
     "curso de barbeiro Araguari",
   ],
   icons: { icon: "/images/logo.png" },
+  alternates: { canonical: "/" },
+  // A imagem da prévia vem de src/app/opengraph-image.tsx
   openGraph: {
     title: "Fabrício Pereira Barber Club",
     description: "Barbearia em Araguari – MG. Corte, barba e sobrancelha na navalha. Agende pelo WhatsApp.",
-    images: ["/images/logo.png"],
+    url: "/",
+    siteName: "Fabrício Pereira Barber Club",
     locale: "pt_BR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fabrício Pereira Barber Club",
+    description: "Barbearia em Araguari – MG. Agende pelo WhatsApp.",
   },
 };
 
