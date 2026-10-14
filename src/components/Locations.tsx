@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useMounted } from "@/lib/hooks";
 import { MapPin, Navigation, Phone } from "lucide-react";
 import { units, weekdayNames } from "@/data/site";
@@ -9,6 +10,54 @@ import { WhatsAppIcon } from "./Icons";
 import { Reveal, SignHeading } from "./Reveal";
 
 const order = [1, 2, 3, 4, 5, 6, 0];
+
+/**
+ * O mapa do Google pesa bastante (vários scripts). Mostramos uma capa leve
+ * e só carregamos o mapa quando a pessoa toca nela.
+ */
+function MapEmbed({ title, query, address }: { title: string; query: string; address: string }) {
+  const [loaded, setLoaded] = useState(false);
+
+  if (loaded) {
+    return (
+      <>
+        <iframe
+          title={title}
+          src={`https://maps.google.com/maps?q=${encodeURIComponent(query)}&z=16&output=embed`}
+          className="absolute inset-0 h-full w-full border-0 [filter:grayscale(1)_invert(0.92)_contrast(0.9)_brightness(0.95)]"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+        <div aria-hidden className="pointer-events-none absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.6)]" />
+      </>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => setLoaded(true)}
+      className="group absolute inset-0 flex flex-col items-center justify-center gap-4 overflow-hidden bg-char text-center"
+      style={{
+        backgroundImage:
+          "linear-gradient(rgba(239,237,232,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(239,237,232,0.05) 1px, transparent 1px)",
+        backgroundSize: "44px 44px",
+      }}
+    >
+      {/* ruas estilizadas */}
+      <span aria-hidden className="absolute left-0 right-0 top-[46%] h-3 -rotate-6 bg-line/80" />
+      <span aria-hidden className="absolute bottom-0 top-0 left-[58%] w-3 rotate-[8deg] bg-line/80" />
+      <span className="relative grid size-14 place-items-center rounded-full bg-brass text-ink shadow-[0_0_0_10px_rgba(201,165,92,0.15)] transition-transform duration-300 group-hover:scale-110">
+        <MapPin className="size-6" />
+      </span>
+      <span className="relative">
+        <span className="block font-medium text-bone">{address}</span>
+        <span className="mt-1 block text-sm text-steel underline decoration-brass/50 underline-offset-4 group-hover:text-bone">
+          Toque para abrir o mapa
+        </span>
+      </span>
+    </button>
+  );
+}
 
 export default function Locations() {
   const [main, second] = units;
@@ -68,14 +117,7 @@ export default function Locations() {
               </div>
             </div>
             <div className="relative min-h-[360px] lg:col-span-7">
-              <iframe
-                title={`Mapa da ${main.name}`}
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(main.embedQuery)}&z=16&output=embed`}
-                className="absolute inset-0 h-full w-full border-0 [filter:grayscale(1)_invert(0.92)_contrast(0.9)_brightness(0.95)]"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-              <div aria-hidden className="pointer-events-none absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.6)]" />
+              <MapEmbed title={`Mapa da ${main.name}`} query={main.embedQuery} address={`${main.street}, ${main.district}`} />
             </div>
           </article>
         </Reveal>

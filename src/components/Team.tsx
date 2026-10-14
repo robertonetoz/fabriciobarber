@@ -25,7 +25,7 @@ export default function Team() {
               key={m.id}
               initial={reduce ? false : { opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+              viewport={{ once: true, margin: "0px 0px -5% 0px" }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: i * 0.15 }}
               className={`group ${i === 1 ? "md:mt-24" : ""}`}
             >
@@ -33,7 +33,7 @@ export default function Team() {
                 <motion.div
                   initial={reduce ? false : { clipPath: "inset(0 0 100% 0)" }}
                   whileInView={{ clipPath: "inset(0 0 0% 0)" }}
-                  viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+                  viewport={{ once: true, margin: "0px 0px -5% 0px" }}
                   transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1], delay: 0.1 + i * 0.15 }}
                 >
                   <ImageSlot

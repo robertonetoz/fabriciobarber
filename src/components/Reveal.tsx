@@ -18,8 +18,8 @@ export function Reveal({ delay = 0, y = 32, children, ...rest }: RevealProps) {
     <motion.div
       initial={reduce ? false : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -12% 0px" }}
-      transition={{ duration: 0.9, ease, delay }}
+      viewport={{ once: true, margin: "0px 0px -5% 0px" }}
+      transition={{ duration: 0.75, ease, delay }}
       {...rest}
     >
       {children}
@@ -53,7 +53,7 @@ export function SignHeading({
       className={`sign ${className}`}
       initial={reduce ? false : "hidden"}
       whileInView="shown"
-      viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+      viewport={{ once: true, margin: "0px 0px -5% 0px" }}
     >
       {lines.map((line, i) => (
         <span key={i} className="-mt-[0.14em] block overflow-hidden pb-[0.06em] pt-[0.14em]">

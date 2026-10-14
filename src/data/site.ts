@@ -159,18 +159,52 @@ export const team: TeamMember[] = [
 export type GalleryItem = {
   src?: string;
   alt: string;
+  /** Miniatura borrada mostrada enquanto a foto carrega (gerada a partir da foto) */
+  blur?: string;
 };
 
 /** Fotos verticais (4:5). Para trocar, coloque em /public/images/trabalhos/ */
 export const gallery: GalleryItem[] = [
-  { src: "/images/trabalhos/degrade-risco.jpg", alt: "Degradê navalhado com risco lateral" },
-  { src: "/images/trabalhos/infantil-topete.jpg", alt: "Corte infantil com topete" },
-  { src: "/images/trabalhos/mid-fade-topete.jpg", alt: "Mid fade com topete penteado" },
-  { src: "/images/trabalhos/social-barba.jpg", alt: "Corte social com barba alinhada" },
-  { src: "/images/trabalhos/low-fade-barba.jpg", alt: "Low fade com barba degradê" },
-  { src: "/images/trabalhos/infantil-tesoura.jpg", alt: "Corte infantil na tesoura" },
-  { src: "/images/trabalhos/degrade-alto.jpg", alt: "Degradê alto com topete" },
-  { src: "/images/trabalhos/textura-volume.jpg", alt: "Corte com textura e volume no topo" },
+  {
+    src: "/images/trabalhos/degrade-risco.jpg",
+    alt: "Degradê navalhado com risco lateral",
+    blur: "data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAPAAwDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABAX/xAAiEAACAQQBBAMAAAAAAAAAAAABAgMABBEhEwUSIlFBcYH/xAAUAQEAAAAAAAAAAAAAAAAAAAAB/8QAFhEBAQEAAAAAAAAAAAAAAAAAAQAR/9oADAMBAAIRAxEAPwCTaySTwSJxu3YNFW0PesaodzJbRyADzyuSQMb/AGmWXWJ1mdgyyBsKVddEbHx90ObhklY8KHePVAS5f//Z",
+  },
+  {
+    src: "/images/trabalhos/infantil-topete.jpg",
+    alt: "Corte infantil com topete",
+    blur: "data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAPAAwDASIAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAABf/EACIQAAIBAwIHAAAAAAAAAAAAAAECAwAEERJhBQYTIjFRcf/EABQBAQAAAAAAAAAAAAAAAAAAAAH/xAAZEQADAAMAAAAAAAAAAAAAAAAAARECAxL/2gAMAwEAAhEDEQA/ACrKJzEUiRuiV1NnuKj3miL02y3TgFX3BIFO8uoixSzyMcSAKV8gijeJWkQvZNEpRSchWGcfNqXtV5BYOU//2Q==",
+  },
+  {
+    src: "/images/trabalhos/mid-fade-topete.jpg",
+    alt: "Mid fade com topete penteado",
+    blur: "data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAPAAwDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABAX/xAAhEAACAQQCAgMAAAAAAAAAAAABAgMABBESITEUQSNRgf/EABQBAQAAAAAAAAAAAAAAAAAAAAH/xAAWEQEBAQAAAAAAAAAAAAAAAAABABH/2gAMAwEAAhEDEQA/AJO1xLHoYGGpwg3zrRZY7SJtW+RuyRkc56OfdO8h7KeF4ZCpCk8jPB9Y+uKHMIbieSV0UszEkqMA/lBrLhf/2Q==",
+  },
+  {
+    src: "/images/trabalhos/social-barba.jpg",
+    alt: "Corte social com barba alinhada",
+    blur: "data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAPAAwDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgQF/8QAJBAAAgECBQQDAAAAAAAAAAAAAQIRAAMEBRIhMQYTFEEyUXH/xAAUAQEAAAAAAAAAAAAAAAAAAAAC/8QAFhEBAQEAAAAAAAAAAAAAAAAAAQAR/9oADAMBAAIRAxEAPwA0uXvcINlRITUy6pMCpGw0H5JJ9H1SXpy3g0yybzsbz3dgBwojY/tYmOZfKftghZIj634oOkjL/9k=",
+  },
+  {
+    src: "/images/trabalhos/low-fade-barba.jpg",
+    alt: "Low fade com barba degradê",
+    blur: "data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAPAAwDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQT/xAAhEAADAAIBAwUAAAAAAAAAAAABAgMEEQAFITESExRRYf/EABQBAQAAAAAAAAAAAAAAAAAAAAL/xAAWEQADAAAAAAAAAAAAAAAAAAAAETH/2gAMAwEAAhEDEQA/AB8XEu8HqIEjGGqTA3378gfBnQh6WjN28o1CCv544tidTnP5HsTK1snpoWYnba8jgudNGymYMx3o/XDBJw//2Q==",
+  },
+  {
+    src: "/images/trabalhos/infantil-tesoura.jpg",
+    alt: "Corte infantil na tesoura",
+    blur: "data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAPAAwDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABAX/xAAgEAACAQQDAAMAAAAAAAAAAAABAwIABBESISIxQWHR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAWEQADAAAAAAAAAAAAAAAAAAAAARH/2gAMAwEAAhEDEQA/AA2tzp1VbzW1pxCMhzLz9oZWlLGRdCUp7E4Ewdfr2qF1dtsUKEJAMJ6sAzqCKhXcVteTkyxxtL0n5NSqLh//2Q==",
+  },
+  {
+    src: "/images/trabalhos/degrade-alto.jpg",
+    alt: "Degradê alto com topete",
+    blur: "data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAPAAwDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABAb/xAAhEAACAQMEAwEAAAAAAAAAAAABAgMABBESITEyBRNhwf/EABQBAQAAAAAAAAAAAAAAAAAAAAL/xAAXEQADAQAAAAAAAAAAAAAAAAAAARJB/9oADAMBAAIRAxEAPwAc1lPeWrs26onUHtj9qee0muHMsbB0bg5xj5Tk8nP65otWFkxsBwMUK5uWMx0TSheANR2oKtE5w//Z",
+  },
+  {
+    src: "/images/trabalhos/textura-volume.jpg",
+    alt: "Corte com textura e volume no topo",
+    blur: "data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAPAAwDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQT/xAAgEAACAQQBBQAAAAAAAAAAAAABAhEAAwQSMSEyQ1FS/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAWEQEBAQAAAAAAAAAAAAAAAAABABH/2gAMAwEAAhEDEQA/ABsVItaKzKH8X00xBijr2M1u4V1BPtRIplckpZDa2w4AAIXtHJ1qN8lWdmUnqZJI5NTik6Df/9k=",
+  },
 ];
 
 export const heroImage = { src: "", alt: "Fabrício Pereira atendendo na barbearia" };

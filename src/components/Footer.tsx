@@ -8,7 +8,9 @@ export default function Footer() {
   const main = units[0];
   return (
     <footer className="relative overflow-hidden border-t border-line">
-      <div aria-hidden className="pole-stripes animate-pole h-2 w-full opacity-80" />
+      <div aria-hidden className="relative h-2 overflow-hidden">
+        <div className="pole-stripes pole-run-x absolute inset-y-0 -left-10 right-0 opacity-80" />
+      </div>
 
       <div className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">

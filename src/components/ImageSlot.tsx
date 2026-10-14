@@ -8,6 +8,8 @@ type Props = {
   preload?: boolean;
   /** Texto do espaço reservado enquanto não há foto */
   hint?: string;
+  /** Miniatura borrada (data URL) mostrada enquanto a foto carrega */
+  blur?: string;
   /** Esconde o logo d'água do espaço reservado */
   plain?: boolean;
 };
@@ -16,11 +18,20 @@ type Props = {
  * Mostra a foto quando existe `src`; senão, um quadro reservado no mesmo
  * tamanho, com a marca d'água do logo — o layout já fica pronto para as fotos.
  */
-export default function ImageSlot({ src, alt, sizes = "100vw", className = "", preload, hint, plain }: Props) {
+export default function ImageSlot({ src, alt, sizes = "100vw", className = "", preload, hint, plain, blur }: Props) {
   if (src) {
     return (
       <div className={`relative overflow-hidden bg-char ${className}`}>
-        <Image src={src} alt={alt} fill sizes={sizes} preload={preload} className="object-cover" />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes={sizes}
+          preload={preload}
+          placeholder={blur ? "blur" : "empty"}
+          blurDataURL={blur}
+          className="object-cover"
+        />
       </div>
     );
   }

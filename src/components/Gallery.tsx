@@ -55,17 +55,13 @@ export default function Gallery() {
                 onClick={() => setActive(i)}
                 initial={reduce ? false : { opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "0px 0px -8% 0px" }}
+                viewport={{ once: true, margin: "0px 0px -5% 0px" }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: (i % 4) * 0.08 }}
                 className="group relative block aspect-[4/5] w-full overflow-hidden text-left"
                 aria-label={`Ampliar: ${g.alt}`}
               >
                 <span className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-105">
-                  <ImageSlot src={g.src} alt={g.alt} sizes="(min-width:1024px) 25vw, 50vw" className="h-full w-full" />
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/0 to-ink/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <span className="absolute inset-x-4 bottom-4 translate-y-2 text-sm font-medium text-bone opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                  {g.alt}
+                  <ImageSlot src={g.src} alt={g.alt} blur={g.blur} sizes="(min-width:1024px) 25vw, 50vw" className="h-full w-full" />
                 </span>
                 <span className="absolute right-3 top-3 grid size-9 place-items-center rounded-full bg-ink/70 text-bone opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
                   <Expand className="size-4" />
@@ -83,7 +79,7 @@ export default function Gallery() {
             data-lenis-prevent
             aria-modal="true"
             aria-label={gallery[active].alt}
-            className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/95 p-4 backdrop-blur-md md:p-10"
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/95 p-4 md:p-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -98,9 +94,9 @@ export default function Gallery() {
               className="relative aspect-[4/5] w-[min(88vw,64vh)]"
               onClick={(e) => e.stopPropagation()}
             >
-              <ImageSlot src={gallery[active].src} alt={gallery[active].alt} sizes="(min-width:768px) 64vh, 88vw" className="h-full w-full" />
-              <p className="absolute -bottom-9 left-0 text-sm text-steel">
-                {gallery[active].alt} <span className="text-smoke">({active + 1}/{gallery.length})</span>
+              <ImageSlot src={gallery[active].src} alt={gallery[active].alt} blur={gallery[active].blur} sizes="(min-width:768px) 64vh, 88vw" className="h-full w-full" />
+              <p className="absolute -bottom-9 left-0 right-0 text-center text-sm tabular-nums text-smoke">
+                {active + 1}/{gallery.length}
               </p>
             </motion.div>
 

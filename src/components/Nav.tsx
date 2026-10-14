@@ -26,7 +26,7 @@ export default function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,padding] duration-500 ${
-        scrolled ? "border-b border-line/70 bg-ink/80 py-3 backdrop-blur-xl" : "border-b border-transparent py-5"
+        scrolled ? "border-b border-line/70 bg-ink/95 py-3 md:bg-ink/80 md:backdrop-blur-xl" : "border-b border-transparent py-5"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8" aria-label="Principal">
@@ -77,7 +77,7 @@ export default function Nav() {
             exit={{ clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div aria-hidden className="pole-stripes animate-pole absolute right-0 top-0 h-full w-2 opacity-60" />
+            <div aria-hidden className="pole-stripes pole-run-y absolute -top-10 bottom-0 right-0 w-2 opacity-60" />
             <ul className="flex flex-col gap-1">
               {[...navLinks, { href: "#agendar", label: "Agendar" }].map((l, i) => (
                 <motion.li

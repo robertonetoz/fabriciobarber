@@ -12,7 +12,6 @@ const display = Big_Shoulders({
 const sans = Instrument_Sans({
   variable: "--font-instrument",
   subsets: ["latin"],
-  axes: ["wdth"],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +26,6 @@ export const metadata: Metadata = {
     "corte de cabelo Araguari",
     "curso de barbeiro Araguari",
   ],
-  icons: { icon: "/images/logo.png" },
   alternates: { canonical: "/" },
   // A imagem da prévia vem de src/app/opengraph-image.tsx
   openGraph: {

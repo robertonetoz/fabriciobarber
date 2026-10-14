@@ -123,7 +123,7 @@ export default function Booking() {
 
   return (
     <section id="agendar" className="relative overflow-hidden py-24 md:py-36">
-      <div aria-hidden className="absolute left-1/2 top-0 -z-10 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-brass/[0.06] blur-[160px]" />
+      <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[700px]" style={{ background: "radial-gradient(50% 60% at 50% 0%, rgba(201,165,92,0.08), transparent 70%)" }} />
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <SignHeading lines={["Monte seu", "horário"]} className="text-[clamp(3rem,8vw,7rem)] text-bone lg:col-span-7" />
@@ -138,7 +138,7 @@ export default function Booking() {
         <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-12">
           {/* Formulário */}
           <Reveal className="min-w-0 lg:col-span-7">
-            <div className="space-y-10 border border-line bg-coal/80 p-5 backdrop-blur sm:p-8">
+            <div className="space-y-10 border border-line bg-coal p-5 sm:p-8">
               <Step n={1} title="Serviços" hint="Pode marcar mais de um">
                 <div className="grid gap-3 sm:grid-cols-2">
                   {services.map((s) => {

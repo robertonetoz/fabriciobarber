@@ -83,7 +83,7 @@ export default function Course() {
           <motion.div
             initial={reduce ? false : { opacity: 0, rotate: -4, y: 60 }}
             whileInView={{ opacity: 1, rotate: -2, y: 0 }}
-            viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+            viewport={{ once: true, margin: "0px 0px -5% 0px" }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="relative mx-auto max-w-[520px] border border-brass/40 bg-coal p-3 shadow-[0_50px_100px_-40px_rgba(201,165,92,0.35)]"
           >

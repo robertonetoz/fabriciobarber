@@ -4,15 +4,33 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring, useTransform } from "motion/react";
 import { mainUnit } from "@/data/site";
 import { waLink } from "@/lib/utils";
+import { useMediaQuery } from "@/lib/hooks";
 import { WhatsAppIcon } from "./Icons";
 
-/** Botão flutuante do WhatsApp + poste de barbeiro que marca o progresso da rolagem */
-export default function FloatingUI() {
-  const [show, setShow] = useState(false);
+/** Poste de barbeiro que marca o progresso da rolagem (só em telas grandes) */
+function ScrollPole() {
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
-  const height = useTransform(progress, [0, 1], ["0%", "100%"]);
   const stripeY = useTransform(scrollYProgress, [0, 1], [0, 900]);
+
+  return (
+    <div aria-hidden className="fixed right-5 top-1/2 z-40 flex h-[38vh] -translate-y-1/2 flex-col items-center">
+      <span className="h-2.5 w-4 rounded-t-full bg-gradient-to-b from-brass-light to-brass-deep" />
+      <span className="relative w-2 flex-1 overflow-hidden bg-line/60">
+        {/* scaleY em vez de height: só a GPU trabalha, sem recalcular layout */}
+        <motion.span className="absolute inset-0 origin-top overflow-hidden" style={{ scaleY: progress }}>
+          <motion.span className="pole-stripes absolute inset-x-0 -top-[900px] h-[calc(38vh+1800px)]" style={{ y: stripeY }} />
+        </motion.span>
+      </span>
+      <span className="h-2.5 w-4 rounded-b-full bg-gradient-to-t from-brass-light to-brass-deep" />
+    </div>
+  );
+}
+
+/** Botão flutuante do WhatsApp + poste de progresso no desktop */
+export default function FloatingUI() {
+  const [show, setShow] = useState(false);
+  const wide = useMediaQuery("(min-width: 1280px)");
 
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > window.innerHeight * 0.7);
@@ -23,19 +41,7 @@ export default function FloatingUI() {
 
   return (
     <>
-      {/* poste de progresso, só no desktop */}
-      <div aria-hidden className="fixed right-5 top-1/2 z-40 hidden h-[38vh] -translate-y-1/2 flex-col items-center xl:flex">
-        <span className="h-2.5 w-4 rounded-t-full bg-gradient-to-b from-brass-light to-brass-deep" />
-        <span className="relative w-2 flex-1 overflow-hidden bg-line/60">
-          <motion.span className="absolute inset-x-0 top-0 overflow-hidden" style={{ height }}>
-            <motion.span
-              className="pole-stripes absolute inset-x-0 -top-[900px] h-[calc(38vh+1800px)]"
-              style={{ y: stripeY }}
-            />
-          </motion.span>
-        </span>
-        <span className="h-2.5 w-4 rounded-b-full bg-gradient-to-t from-brass-light to-brass-deep" />
-      </div>
+      {wide && <ScrollPole />}
 
       <AnimatePresence>
         {show && (
